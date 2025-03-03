@@ -18,8 +18,14 @@ with open('scaler.pkl', 'rb') as file:
 # Title of the app
 st.title("CO2 Emissions Prediction")
 
+st.subheader("The model will be used to predict the CO2 Emissions based on specific energy inputs")
+
 # Load the list of countries from a CSV file
 filtered_df = pd.read_csv('data.csv')  
+
+# Checkbox to show the dataset
+if st.checkbox("Show Dataset"):
+    st.write(filtered_df .head())
 
 #filtered_df = data_df[data_df['Some_Column'] == 'Some_Value']
 countries = filtered_df['Entity'].unique().tolist()
@@ -28,11 +34,11 @@ countries = filtered_df['Entity'].unique().tolist()
 st.header("Model Deployment")
 entity = st.selectbox("Entity", options=countries)  # Replace with actual entities
 year = st.number_input("Year", min_value=1980, max_value=2030, value=2000)
-elec_generated = st.number_input("Elec_Generated", min_value=0.0, value=1000.0)
-renewable_energy = st.number_input("Renewable_Energy",  min_value=0.0, value=5000.0)
-non_renewable_energy = st.number_input("Non_Renewable_Energy",  min_value=0.0, value=15000.0)
+elec_generated = st.number_input("Elec_Generated", min_value=0.0, value=100.0)
+renewable_energy = st.number_input("Renewable_Energy",  min_value=0.0, value=500.0)
+non_renewable_energy = st.number_input("Non_Renewable_Energy",  min_value=0.0, value=150.0)
 Energy_Consumption_Per_Capita = st.number_input("Energy_Consumption_Per_Capita",  min_value=0.0, value=1.0)
-GDP_Per_Capita = st.number_input("GDP_Per_Capita",  min_value=0.0, value=100000.0)
+GDP_Per_Capita = st.number_input("GDP_Per_Capita",  min_value=0.0, value=1000.0)
 pry_energy_consumption = st.number_input("Pry_Energy_Consumption", min_value=0.0, value=1000.0)
 population = st.number_input("Population", min_value=0, value=10000000)
 gdp = st.number_input("GDP", min_value=0.0, value=100000000.0)
