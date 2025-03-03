@@ -39,9 +39,9 @@ renewable_energy = st.number_input("Renewable_Energy",  min_value=0.0, value=500
 non_renewable_energy = st.number_input("Non_Renewable_Energy",  min_value=0.0, value=150.0)
 Energy_Consumption_Per_Capita = st.number_input("Energy_Consumption_Per_Capita",  min_value=0.0, value=1.0)
 GDP_Per_Capita = st.number_input("GDP_Per_Capita",  min_value=0.0, value=1000.0)
-pry_energy_consumption = st.number_input("Pry_Energy_Consumption", min_value=0.0, value=1000.0)
-population = st.number_input("Population", min_value=0, value=10000000)
-gdp = st.number_input("GDP", min_value=0.0, value=100000000.0)
+pry_energy_consumption = st.number_input("Pry_Energy_Consumption", min_value=0.0, value=100.0)
+population = st.number_input("Population", min_value=0, value=100000)
+gdp = st.number_input("GDP", min_value=0.0, value=1000000.0)
 
 # Create a DataFrame for the input features
 input_data = np.array([[renewable_energy, non_renewable_energy, Energy_Consumption_Per_Capita,
@@ -56,7 +56,7 @@ if st.button("Predict CO2 Emissions"):
 
     # Reverse log transformation
     predictions = np.expm1(prediction[0])  # Reverse log transformation
-
-    st.balloons()
     
     st.success(f"Predicted CO2 Emissions: {predictions/1000000:.2f} Mil tons")
+
+    st.balloons()
